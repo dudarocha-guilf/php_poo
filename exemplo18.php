@@ -27,6 +27,11 @@
             return $this->saldo;
         }
 
+        protected function setSaldo($novoSaldo)
+        {
+            $this->saldo = $novoSaldo;
+        }
+
         //Métodos
         function creditar($valor)
         {
@@ -58,16 +63,6 @@
             $this->juros = $juros;
         }
 
-        public function getNumero()
-        {
-            return $this->numero;
-        }
-
-        public function getSaldo()
-        {
-            return $this->saldo;
-        }
-
         function creditar($valor)
         {
             parent::creditar($valor);
@@ -76,7 +71,8 @@
 
         function atualizarJuros()
         {
-            $this->saldo = $this->saldo * (1 + $this->juros);
+            $novoSaldo = $this->getSaldo() * (1 + $this->juros);
+            $this->setSaldo($novoSaldo);
         }
     }
 
